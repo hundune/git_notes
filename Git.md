@@ -132,5 +132,110 @@ doc/**/*.txt //忽略所有的doc目录及其子目录下的 *。txt 文件
 
 ## SSH配置和克隆仓库
 
+![1698158684796](C:\Users\86182\AppData\Roaming\Typora\typora-user-images\1698158684796.png)
 
 
+
+## 本地仓库与远程仓库关联
+
+git remote add 远程仓库的别名 url（远程仓库的地址）
+
+git remote -v 查看当前仓库对应的远程仓库的别名和地址
+
+git branch -M main 指定分支的名称为main
+
+git push -u  远程仓库的别名  本地分支名：远程分支名 如果名称相同只用写一个分支名
+
+git pull 远程仓库别名 远程分支名：本地分支名 （仓库名和分支名可以省略 默认为 origin main）
+
+git fetch 获得远程仓库的修改 不会合并
+
+
+
+## 其他平台
+
+Gitee 步骤与 github 基本一致
+
+GitLab 步骤一致 ；私有仓库：
+
+
+
+## GUI工具
+
+github desktop 时github官方出品的图形化工具
+
+sourcetree
+
+
+
+## Vscode中使用git
+
+无解
+
+
+
+## 分支及其基本操作
+
+git branch 查看当前仓库的所有分支
+
+git branch 分支名 创建新的分支
+
+git checkout 分支名 切换分支（还可以用于恢复文件，可能出现歧义）
+
+git switch 分支名 专门切换分支
+
+git merge 将要被合并的分支名 （当前所在的分支就是合并后的目标分支）
+
+git branch -d 分支名 如果一个分支被合并了就删除
+
+git branch -D 分支名 强制删除这个分支
+
+
+
+## 解决合并冲突
+
+如果两个分支修改了同一个文件的同一行代码，就会产生冲突
+
+想中断合并 git merge --abort
+
+手动解决冲突：手动选择要保留的内容
+
+修改完后要提交
+
+
+
+## 回退和rebase（变基）
+
+找到两个分支的公共祖先 根据选择的分支不同有不同的合并方式（选择的分支 合并到目标分支的最新提交后）
+
+![1698162255073](C:\Users\86182\AppData\Roaming\Typora\typora-user-images\1698162255073.png)
+
+git checkout -b 想要恢复的分支名 提交的id 恢复到这个分支的这一时间点的状态
+
+git log --oneline --graph --decorate -all 查询出提交和合并的记录
+
+alias graph = “git log --oneline --graph --decorate -all“ alias可以设置快捷的git代码
+
+
+
+rebase和merge的区别
+
+merge 优点：不会破坏原分支的提交历史，方便回溯和查看
+
+缺点：会产生额外的提交节点，分支图比较复杂
+
+
+
+rebase优点：不会新增额外的提交记录，形成线性历史，比较值观和干净
+
+缺点：会改变提交历史，改变了当前分支branch out的节点。
+
+避免在共享分支使用，不会在共分支上使用
+
+
+
+## git的工作流模型
+
+![1698162953458](C:\Users\86182\AppData\Roaming\Typora\typora-user-images\1698162953458.png)
+
+![1698163056055](C:\Users\86182\AppData\Roaming\Typora\typora-user-images\1698163056055.png)
